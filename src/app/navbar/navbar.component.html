@@ -1,0 +1,81 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark ">
+    <mdb-navbar-brand>
+        <a class="navbar-brand" href="#">
+            <img src="../../assets/blood logo.png" height="auto" width="30px" class="d-inline-block align-top" alt="">
+         <span class="logo">BloodFinder</span>
+        </a>
+    </mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/send-request']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">Send Request</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/all-requests']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">See All Request</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/about']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">Contact us</a>
+              </li>
+              <li class="nav-item" *ngIf="user">
+                  <a class="nav-link"  *ngIf="userData" [routerLink]="['/profile']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">{{userData.Name}}</a>
+              </li>
+
+              <li class="nav-item" *ngIf="user">
+                <a class="nav-link"  (click)="logout()">Logout</a>
+              </li>
+
+                <li class="nav-item" *ngIf="!user">
+                  <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">Login</a>
+                </li>
+                <li class="nav-item" *ngIf="!user">
+                  <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">Sign up</a>
+                </li>
+        </ul>
+    </links>
+</mdb-navbar>
+
+<!-- loader-->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+
+<!--Simple Html Code -->
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand"  [routerLink]="['/']">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/send-request']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">Send Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/all-requests']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">See All Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/about']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">Contact us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}">Sign up</a>
+      </li>
+    </ul>
+  </div>
+</nav> -->

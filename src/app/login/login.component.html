@@ -1,0 +1,152 @@
+<div class="container-fluid" style="margin-top: 10px;" >
+  <div class="row">
+    <div class="col-sm col-md-4" ></div>
+    <div class="col-sm col-md-4">
+      <form  [formGroup]="loginForm" (ngSubmit)="Login()" class="border border-light p-5">
+        <p class="h4 mb-4 text-center">Sign in</p>
+
+        <input
+          type="email"
+          id="defaultLoginFormEmail"
+          class="form-control mb-4"
+          placeholder="E-mail"
+          formControlName="email"
+        />
+        <p class="error" *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+          Please enter Name.</p>
+
+        <input
+          type="password"
+          id="defaultLoginFormPassword"
+          class="form-control mb-4"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <p class="error" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+          Please enter password with atleast 6 characters.</p>
+
+        <div class="d-flex justify-content-between">
+          <div>
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="defaultLoginFormRemember"
+              />
+              <label class="custom-control-label" for="defaultLoginFormRemember"
+                >Remember me</label
+              >
+            </div>
+          </div>
+          <div><span (click)="resetEmail()" style="color:#da731c">Forgot password?</span></div>
+        </div>
+
+        <button class="btn btn-info btn-block my-4" [disabled]="!loginForm.valid" type="submit">
+          Sign in
+        </button>
+
+        <div class="text-center">
+          <p>Not a member? <a [routerLink]="['/register']">Register</a></p>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm col-md-4" ></div>
+  </div>
+</div>
+
+<!-- loader-->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+
+<!-- modal -->
+<!-- Central Modal Medium Success success modal-->
+<div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-success" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p *ngIf="isLogin" class="heading lead align-middle" >Congratulations</p>
+        <p *ngIf="trueResp" style="font-size: larger;color: #fff;font-weight: 500;">Check your mail.</p>
+
+        <button (click)="GoToHome() " type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+          <p *ngIf="isLogin">You are Logged In  Successfully...</p>
+          <p *ngIf="trueResp">Password Reset Link is send to your registered email.</p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <img class="align-middle" style="width:20%" src="../../assets/smile.png" alt="">
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Success-->
+
+<!-- Central Modal Medium error error error error modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-error" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead align-middle" >Error</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-times fa-4x animated rotateIn"></i>
+          <p *ngIf="respError">{{respError.message}}</p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <img class="align-middle" style="width:20%" src="../../assets/sad.png" alt="">
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Success-->
+
+
+
+
+<!-- code in simple html/bootstrap -->
+<!--
+  <form [formGroup]="loginForm" (ngSubmit)="Login()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" formControlName="email">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password">
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+-->
+
+

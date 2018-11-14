@@ -1,0 +1,42 @@
+    <div>
+      <form  [formGroup]="editForm" (ngSubmit)="editProfile()" style="margin-top:10px;" class="border border-light p-5">
+        <p class="h4 mb-4 text-center" style="margin-top:-35px;">Sign Up</p>
+
+        <label for="bloodgroup">Name:</label>
+        <input
+        type="text"
+        class="form-control mb-4"
+        formControlName="name"
+        readonly
+      />
+
+        <label for="bloodgroup">Blood Group:</label>
+        <input type="text" class="form-control mb-4" formControlName="bloodgrp" readonly>
+
+        <label for="cities">Select City:</label>
+        <select class="form-control" formControlName="city">
+          <option></option>
+          <option *ngFor="let city of cities">{{city}}</option>
+        </select>
+
+
+       <label for="email">Email:</label>
+        <input
+          type="email"
+          class="form-control mb-4"
+          formControlName="email"
+        />
+
+        <label for="phone">Phone:</label>
+        <input
+        type="number"
+        class="form-control mb-4"
+        formControlName="phone"
+      />
+
+        <button type="submit" class="btn btn-outline-primary waves-effect" data-dismiss="modal">
+          update
+        </button>
+
+      </form>
+    </div>

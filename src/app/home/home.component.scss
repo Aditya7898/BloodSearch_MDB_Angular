@@ -1,0 +1,28 @@
+.error {
+    margin-top: -20px;
+    margin-left: 3px;
+    color: #b50000
+}
+
+.modal-dialog.modal-notify.modal-success .modal-header {
+    background-color: #01d36b;
+}
+.modal-dialog.modal-notify.modal-success .modal-error {
+    background-color: #e23344;
+}
+.modal-dialog.modal-notify .modal-header{
+    background: #b50000;
+}
+.fa.fa-times {
+    color: #b50000;
+}
+
+.search {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px;
+    background-color: var(--orange);
+    margin-top: 23px;
+}
+

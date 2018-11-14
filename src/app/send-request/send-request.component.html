@@ -1,0 +1,308 @@
+<div class="container-fluid">
+  <div class="row" *ngIf="user">
+    <div class="col-sm col-md-2" ></div>
+    <div class="col-sm col-md-8">
+      <form  [formGroup]="requestForm" (ngSubmit)="request()" style="margin-top:10px;" class="border border-light p-5">
+        <p class="h4 mb-4 text-center" style="margin-top:-35px;">Request For Blood</p>
+        <div class="form-group">
+          <label>Patient Name</label>
+          <input
+          type="text"
+          class="form-control mb-4"
+          formControlName="Pname"
+        />
+        <p class="error" *ngIf="!requestForm.get('Pname').valid && requestForm.get('Pname').touched">
+          Please enter Name.</p>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="bloodgroup">Select Blood Group:</label>
+              <select class="form-control" formControlName="Pbloodgrp">
+                  <option></option>
+                <option *ngFor="let group of bloodGroups">{{group}}</option>
+              </select>
+            </div>
+            <p class="error" *ngIf="!requestForm.get('Pbloodgrp').valid && requestForm.get('Pbloodgrp').touched">
+              Please enter Blood Group.</p>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="cities">Select City:</label>
+              <select class="form-control" formControlName="Pcity">
+                <option></option>
+                <option *ngFor="let city of cities">{{city}}</option>
+              </select>
+            </div>
+            <p class="error" *ngIf="!requestForm.get('Pcity').valid && requestForm.get('Pcity').touched">
+              Please enter City.</p>
+          </div>
+          <div class="col">
+              <div class="form-group">
+                  <label>Doctor name</label>
+                  <input
+                  type="text"
+                  class="form-control mb-4"
+                  formControlName="Pdoctor"
+                />
+                <p class="error" *ngIf="!requestForm.get('Pdoctor').valid && requestForm.get('Pdoctor').touched">
+                  Please enter Doctor Name.</p>
+                </div>
+          </div>
+        </div>
+
+
+      
+        <div class="form-group">
+          <label>Hospital Address</label>
+          <textarea class="form-control rounded-0" formControlName="Hospital" rows="3"></textarea>
+          <p class="error" *ngIf="!requestForm.get('Hospital').valid && requestForm.get('Hospital').touched">
+              Please enter hospital details / address.</p>
+        </div>
+
+
+        <!-- ******** Contact Details ******** -->
+        <div class="row">
+          <div class="col">
+              <div class="form-group">
+                  <label for="Contact Name">Contact Name</label>
+                  <input
+                  type="text"
+                  class="form-control mb-4"
+                  placeholder="Name"
+                  formControlName="Cname"
+                />
+                <p class="error" *ngIf="!requestForm.get('Cname').valid && requestForm.get('Cname').touched">
+                  Please enter contact name.</p>
+                </div>
+          </div>
+          <div class="col">
+              <div class="form-group">
+                  <label for="Cemail">Contact Email</label>
+                  <input
+                  type="email"
+                  class="form-control mb-4"
+                  placeholder="E-mail"
+                  formControlName="Cemail"
+                />
+                <p class="error" *ngIf="!requestForm.get('Cemail').valid && requestForm.get('Cemail').touched">
+                  Please enter valid contact email.</p>
+                </div>
+          </div>
+          <div class="col">
+              <div class="form-group">
+                  <label for="Cphone"> Contact Phone</label>
+                  <input
+                  type="number"
+                  class="form-control mb-4"
+                  placeholder="Phone"
+                  formControlName="Cphone"
+                />
+                <p class="error" *ngIf="!requestForm.get('Cphone').valid && requestForm.get('Cphone').touched">
+                  Please enter valid phone number.</p>
+                </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input placeholder="Selected date" formControlName="Cdate" type="date" id="date-picker-example" class="form-control datepicker">
+          <label for="date-picker-example"></label>
+        </div>
+        <p class="error" *ngIf="!requestForm.get('Cdate').valid && requestForm.get('Cdate').touched">
+          Please enter valid date.</p>
+
+        <button class="btn btn-info btn-block my-4" [disabled]="!requestForm.valid" type="submit">
+          Register
+        </button>
+
+      </form>
+    </div>
+    <div class="col-sm col-md-2" ></div>
+  </div>
+
+  <div class="login" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+            <!-- Card -->
+<div class="card">
+
+    <!-- Card image -->
+    <div class="view overlay">
+      <img class="card-img-top" src="data:image/jpeg;base64,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" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+  
+    <!-- Card content -->
+    <div class="card-body">
+  
+      <!-- Title -->
+      <!-- <h4 class="card-title">Sorry !!</h4> -->
+      <!-- Text -->
+      <p class="card-text">You need to Login First to Request for Blood.</p>
+      <!-- Button -->
+      <a [routerLink]="['/login']" [routerLinkActive]="['']" [routerLinkActiveOptions]="{exact: true}" class="btn peach-gradient">Login</a>
+      
+    </div>
+  
+  </div>
+  <!-- Card -->
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- loader-->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+
+
+<!-- modal -->
+<!-- Central Modal Medium Success -->
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-success" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead align-middle" >Congratulations</p>
+
+        <button (click)="GoToHome() " type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+          <p *ngIf="registerRespTrue">Your request is send successfully...</p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <img class="align-middle" style="width:20%" src="../../assets/smile.png" alt="">
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Success-->
+
+
+<!-- Central Modal Medium error error error error modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-error" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead align-middle" >Error</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-times fa-4x animated rotateIn"></i>
+          <p *ngIf="requestError">{{requestError.message}}</p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <img class="align-middle" style="width:20%" src="../../assets/sad.png" alt="">
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium error-->
+
+
+
+<!-- <div class="request container-fluid">
+
+  <form [formGroup]="requestForm" (ngSubmit)="request()">
+    <span>******* Patient Details ******</span>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" formControlName="Pname" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="bloodgroup">Select Blood Group:</label>
+      <select class="form-control" formControlName="Pbloodgrp">
+        <option></option>
+        <option *ngFor="let group of bloodGroups">{{group}}</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label for="cities">Select City:</label>
+      <select class="form-control" formControlName="Pcity">
+        <option></option>
+        <option *ngFor="let city of cities">{{city}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="doctor">Doctor Name</label>
+      <input type="text" formControlName="Pdoctor" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Hospital:</label>
+      <textarea class="form-control" formControlName="Hospital" rows="5" id="comment"></textarea>
+    </div>
+
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+      <p style="font-size: 20px; color: white">Loading...</p>
+    </ngx-spinner>
+
+    <span>********** Contact Details **********</span>
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" formControlName="Cname" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" formControlName="Cemail" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="number" formControlName="Cphone" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="Cdate">Date:</label>
+      <input type="date" formControlName="Cdate" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div *ngIf="requestForm.valid">
+    <span *ngIf="isSend">Send Successfully..</span>
+    <span *ngIf="!isSend">something went wrong..</span>
+  </div>
+
+</div> -->
